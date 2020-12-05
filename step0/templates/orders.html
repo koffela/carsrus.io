@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function clickHandlerA(orderNumber, cartID, finalPrice) {
+      var table = document.getElementById("myTable");
+      var row = table.insertRow(-1);
+      var cell0 = row.insertCell(0);
+      var cell1 = row.insertCell(1);
+      var cell2 = row.insertCell(2);
+      cell0.innerHTML = orderNumber;
+      cell1.innerHTML = cartID;
+      cell2.innerHTML = finalPrice;
+      //alert("You added an entry to the table!");
+    }
+  </script>
+  <script>
+    function clickHandlerD(deleteID) {
+      document.getElementById("myTable").deleteRow(deleteID);
+      //alert("You deleted an entry from the table!");
+    }
+  </script>
+  <script>
+    function clickHandlerU(row, cell, replaceWith) {
+      var select = document.getElementById("myTable").rows;
+      var row = select[row].cells;
+      row[cell].innerHTML = replaceWith;
+      //alert("You deleted an entry from the table!");
+    }
+  </script>
+<style>
+    html{
+        padding: 0px;
+    }
+table, th, td {
+  border: 1px solid black;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 2px;
+}
+th {
+  text-align: left;
+}
+div {
+    margin: 0px 0px 0px 0px;
+}
+</style>
+</head>
+<body style = "margin-left: 1px; margin-top: 0px; padding: 0">
+
+<!-- <h2></h2> -->
+<!-- <p></p> -->
+
+<!--<table style="width:100%">-->
+<div>
+<table id = "myTable">
+  <tr>
+    <th>orderNumber</th>
+    <th>cartID</th> 
+    <th>finalPrice</th>
+  </tr>
+  <tr>
+    <td>42069</td>
+    <td>90210</td>
+    <td>$1309.98</td>
+  </tr>
+</table>
+</div>
+<form>
+  <label for="orderNumber">orderNumber</label><br>
+  <input type="text" id="orderNumber" name="orderNumber"><br>
+  <label for="cartID">cartID</label><br>
+  <input type="text" id="cartID" name="cartID"><br>
+  <label for="finalPrice">finalPrice</label><br>
+  <input type="text" id="finalPrice" name="finalPrice"><br>
+  <input type = "button" onclick = "clickHandlerA(document.getElementById('orderNumber').value, document.getElementById('cartID').value, document.getElementById('finalPrice').value)" value = "Add Entry">
+  <br>
+  <br>
+</form>
+<form>
+  <label for="deleteID">deleteID</label><br>
+  <input type="text" id="deleteID" name="deleteID"><br>
+  <input type = "button" onclick = "clickHandlerD(document.getElementById('deleteID').value)" value = "Delete Entry">
+  <br>
+  <br>
+</form>
+<form>
+  <label for="row">Row</label><br>
+  <input type="text" id="row" name="row"><br>
+  <label for="cell">Cell</label><br>
+  <input type="text" id="cell" name="cell"><br>
+  <label for="replaceWith">Replace with</label><br>
+  <input type="text" id="replaceWith" name="replaceWith"><br>
+  <input type = "button" onclick = "clickHandlerU(document.getElementById('row').value, document.getElementById('cell').value, document.getElementById('replaceWith').value)" value = "Update Entry">
+  <br>
+  <br>
+</form>
+
+</body>
+</html>
