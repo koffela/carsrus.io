@@ -121,3 +121,39 @@ def insert_po():
         data = (productID, price, make, model)
         execute_query(db_connection, query, data)
         return ('Product added!')
+
+@webapp.route('/delete_order/<int:orderNumber')
+def delete_order(orderNumber):
+    db_connection = connect_to_database()
+    query = "DELETE FROM orders WHERE ordernumber = %s"
+    data = (orderNumber)
+
+    result = execute_query(db_connection, query, data)
+    return (str(result.rowcount) + "order deleted")
+
+@webapp.route('/delete_product/<int:productID')
+def delete_product(productID):
+    db_connection = connect_to_database()
+    query = "DELETE FROM products WHERE productID = %s"
+    data = (productID)
+
+    result = execute_query(db_connection, query, data)
+    return (str(result.rowcount) + "product deleted")
+
+@webapp.route('/delete_customer/<int:customerID')
+def delete_customer(customerID):
+    db_connection = connect_to_database()
+    query = "DELETE FROM customers WHERE customerID = %s"
+    data = (customerID)
+
+    result = execute_query(db_connection, query, data)
+    return (str(result.rowcount) + "customer deleted")
+
+@webapp.route('/delete_cart/<int:cartID')
+def delete_cart(cartID):
+    db_connection = connect_to_database()
+    query = "DELETE FROM cart WHERE cartID = %s"
+    data = (cartID)
+
+    result = execute_query(db_connection, query, data)
+    return (str(result.rowcount) + "cart deleted")
