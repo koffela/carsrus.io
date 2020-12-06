@@ -1,11 +1,11 @@
-import MySQLdb as mariadb
+import MySQLdb as rds
 from db_credentials import host, user, passwd, db
 
 def connect_to_database(host = host, user = user, passwd = passwd, db = db):
     '''
     connects to a database and returns a database objects
     '''
-    db_connection = mariadb.connect(host,user,passwd,db)
+    db_connection = rds.connect(host,user,passwd,db)
     return db_connection
 
 def execute_query(db_connection = None, query = None, query_params = ()):
@@ -45,12 +45,14 @@ def execute_query(db_connection = None, query = None, query_params = ()):
     db_connection.commit()
     return cursor
 
+
 if __name__ == '__main__':
     print("Executing a sample query on the database using the credentials from db_credentials.py")
     db = connect_to_database()
-    query = "SELECT * from bsg_people;"
+    query = "SELECT * from cart"
     results = execute_query(db, query)
     print("Printing results of %s" % query)
 
     for r in results.fetchall():
         print(r)
+
