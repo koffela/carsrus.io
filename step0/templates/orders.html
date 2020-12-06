@@ -87,6 +87,7 @@
   </table>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
+	<form action = "/insert_order" method = "POST">
       <label for="orderNumber">orderNumber</label><br>
   <input type="text" id="orderNumber" name="orderNumber"><br>
   <label for="cartID">cartID</label><br>
@@ -96,6 +97,7 @@
       <button class="btn btn-outline-secondary" type="button" id="button-addon1"
       onclick = "clickHandlerA(document.getElementById('orderNumber').value, document.getElementById('cartID').value, document.getElementById('finalPrice').value)"
       >Add Order</button>
+	  </form>
     </div>
 
   <div class="btn-group" role="group" aria-label="Basic example">

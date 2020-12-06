@@ -91,6 +91,7 @@
   </table>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
+	<form action = "/insert_po" method = "POST">
       <label for="productID">ProductID</label><br>
       <input type="text" id="productID" name="productID"><br>
       <label for="ordernumber">OrderNumber</label><br>
@@ -98,6 +99,7 @@
       <button class="btn btn-outline-secondary" type="button" id="button-addon1"
       onclick = "clickHandlerA(document.getElementById('productID').value, document.getElementById('ordernumber').value)"
       >Add Entry</button>
+	  </form>
     </div>
     <br>
   <div class="btn-group" role="group" aria-label="Basic example">

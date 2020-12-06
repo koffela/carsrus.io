@@ -58,7 +58,7 @@ def insert_order():
         cartID = request.form['cartID']
         finalPrice = request.form['finalPrice']
         query = "INSERT INTO orders (orderNumber, cartID, finalPrice) VALUES (%d, %d, %d)"
-        data = (orderNumber, (SELECT cid FROM cart WHERE cid = cartID), totalCost, quantity))
+        data = (orderNumber, (SELECT cartID FROM cart WHERE cartID = cartID), totalCost, quantity))
         execute_query(db_connection, query, data)
         return ('Order added!')
 
@@ -81,3 +81,43 @@ def insert_po():
         data = ((SELECT pid FROM products WHERE pid = productID), (SELECT orderNumber FROM orders WHERE orderNumber = orderNumber))
         execute_query(db_connection, query, data)
         return ('Products_order added!')
+
+@webapp.route('/insert_customer', methods=['POST','GET'])
+def insert_po():
+    db_connection = connect_to_database()
+    if request.method == 'GET':
+        query = 'SELECT * FROM customers'
+        result = execute_query(db_connection, query).fetchall()
+        print(result)
+
+        return render_template('customers.html', orders = result)
+    elif request.method == 'POST':
+        print("Add new customer!")
+        customerID = request.form['customerID']
+        cartID = request.form['cartID']
+        email = request.form['email']
+        orderNumber = request.form['address']
+        query = "INSERT INTO customer (customerID, cartID, email, address) VALUES (%d, %d, %s, %s)"
+        data = (customerID, (SELECT cartID FROM cart WHERE cartID = cartID), email, address)
+        execute_query(db_connection, query, data)
+        return ('Customer added!')
+
+@webapp.route('/insert_product', methods=['POST','GET'])
+def insert_po():
+    db_connection = connect_to_database()
+    if request.method == 'GET':
+        query = 'SELECT * FROM products'
+        result = execute_query(db_connection, query).fetchall()
+        print(result)
+
+        return render_template('products.html', orders = result)
+    elif request.method == 'POST':
+        print("Add new product!")
+        customerID = request.form['productID']
+        cartID = request.form['price']
+        email = request.form['make']
+        orderNumber = request.form['model']
+        query = "INSERT INTO products (productID, price, make, model) VALUES (%d, %d, %d, %d)"
+        data = (productID, price, make, model)
+        execute_query(db_connection, query, data)
+        return ('Product added!')
