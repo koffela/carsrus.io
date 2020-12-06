@@ -175,7 +175,7 @@ def update_order(orderNumber):
         finalPrice = request.form['finalPrice']
 
 
-        query = "UPDATE bsg_people SET cartID = %s, finalPrice = %s  WHERE orderNumber = %s"
+        query = "UPDATE orders SET cartID = %s, finalPrice = %s  WHERE orderNumber = %s"
         data = (orderNumber, cartID, finalPrice)
         result = execute_query(db_connection, query, data)
         print(str(result.rowcount) + " orders updated")
