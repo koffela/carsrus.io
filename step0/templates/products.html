@@ -36,6 +36,28 @@
   <title>Products</title>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Cars "R" Us</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="customers.html">Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="orders.html">Orders</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="products.html">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">Cart</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter By</button>
@@ -81,10 +103,19 @@
   </table>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon1">Add Products</button>
+      <label for="productID">ProductID</label><br>
+  <input type="text" id="productID" name="productID"><br>
+  <label for="price">Price</label><br>
+  <input type="text" id="price" name="price"><br>
+  <label for="make">Make</label><br>
+  <input type="text" id="make" name="make"><br>
+  <label for="model">Model</label><br>
+  <input type="text" id="model" name="model"><br>
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1"
+      onclick = "clickHandlerA(document.getElementById('productID').value, document.getElementById('price').value, document.getElementById('make').value, document.getElementById('model').value)"
+      >Add Products</button>
     </div>
-    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-  </div>
+
   <div class="btn-group" role="group" aria-label="Basic example">
     <input type="text" id="deleteID" name="deleteID"><br>
     <button type="button" class="btn btn-secondary" onclick = "clickHandlerD(document.getElementById('deleteID').value)" value = "Delete Products">Delete Products</button>
