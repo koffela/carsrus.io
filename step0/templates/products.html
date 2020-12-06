@@ -103,6 +103,7 @@
   </table>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
+	<form action = "/insert_product" method = "POST">
       <label for="productID">ProductID</label><br>
   <input type="text" id="productID" name="productID"><br>
   <label for="price">Price</label><br>
@@ -114,6 +115,7 @@
       <button class="btn btn-outline-secondary" type="button" id="button-addon1"
       onclick = "clickHandlerA(document.getElementById('productID').value, document.getElementById('price').value, document.getElementById('make').value, document.getElementById('model').value)"
       >Add Products</button>
+	  </form>
     </div>
 
   <div class="btn-group" role="group" aria-label="Basic example">

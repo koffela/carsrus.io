@@ -104,6 +104,7 @@
   </table>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
+	<form action = "/insert_customer" method = "POST">
       <label for="customerID">CustomerID</label><br>
   <input type="text" id="customerID" name="customerID"><br>
   <label for="cartID">CartID</label><br>
@@ -115,6 +116,7 @@
       <button class="btn btn-outline-secondary" type="button" id="button-addon1"
       onclick = "clickHandlerA(document.getElementById('customerID').value, document.getElementById('cartID').value, document.getElementById('email').value, document.getElementById('address').value)"
       >Add Customer</button>
+	  </form>
     </div>
   </div>
 
