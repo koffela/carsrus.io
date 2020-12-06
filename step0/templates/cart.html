@@ -79,7 +79,7 @@ div {
 </table>
 
 </div>
-<form>
+<form action = "/insert" method = "POST">
   <label for="cartID">cartID</label><br>
   <input type="text" id="cartID" name="cartID"><br>
   <label for="productID">productID</label><br>
@@ -88,7 +88,7 @@ div {
   <input type="text" id="totalCost" name="totalCost"><br>
   <label for="quantity">quantity</label><br>
   <input type="text" id="quantity" name="quantity"><br>
-  <input type = "button" onclick = "clickHandlerA(document.getElementById('cartID').value, document.getElementById('productID').value, document.getElementById('totalCost').value, document.getElementById('quantity').value)" value = "Add Entry">
+  <input type = "submit" name = "submit" value = "Add Entry" >
   <br>
   <br>
 </form>
