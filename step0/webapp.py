@@ -122,7 +122,7 @@ def insert_po():
         execute_query(db_connection, query, data)
         return ('Product added!')
 
-@webapp.route('/delete_order/<int:orderNumber')
+@webapp.route('/delete_order/<int:orderNumber>')
 def delete_order(orderNumber):
     db_connection = connect_to_database()
     query = "DELETE FROM orders WHERE ordernumber = %s"
@@ -131,7 +131,7 @@ def delete_order(orderNumber):
     result = execute_query(db_connection, query, data)
     return (str(result.rowcount) + "order deleted")
 
-@webapp.route('/delete_product/<int:productID')
+@webapp.route('/delete_product/<int:productID>')
 def delete_product(productID):
     db_connection = connect_to_database()
     query = "DELETE FROM products WHERE productID = %s"
@@ -140,7 +140,7 @@ def delete_product(productID):
     result = execute_query(db_connection, query, data)
     return (str(result.rowcount) + "product deleted")
 
-@webapp.route('/delete_customer/<int:customerID')
+@webapp.route('/delete_customer/<int:customerID>')
 def delete_customer(customerID):
     db_connection = connect_to_database()
     query = "DELETE FROM customers WHERE customerID = %s"
@@ -149,7 +149,7 @@ def delete_customer(customerID):
     result = execute_query(db_connection, query, data)
     return (str(result.rowcount) + "customer deleted")
 
-@webapp.route('/delete_cart/<int:cartID')
+@webapp.route('/delete_cart/<int:cartID>')
 def delete_cart(cartID):
     db_connection = connect_to_database()
     query = "DELETE FROM cart WHERE cartID = %s"
@@ -162,7 +162,7 @@ def delete_cart(cartID):
 def update_order(orderNumber):
     db_connection = connect_to_database()
     if request.method == 'GET':
-        order_query = 'SELECT orderNumber, cartID, finalPrice from orders WHERE orderNumber = %s'  % (id)
+        order_query = 'SELECT orderNumber, cartID, finalPrice from orders WHERE orderNumber = %s'  % (orderNumber)
         order_result = execute_query(db_connection, order_query).fetchone()
 
         if people_result == None:
