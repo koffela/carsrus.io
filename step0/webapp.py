@@ -181,3 +181,28 @@ def update_order(orderNumber):
         print(str(result.rowcount) + " orders updated")
 
         return redirect('orders.html')
+
+@webapp.route('/update_product/<int:productID>', methods=['POST','GET'])
+def update_order(productID):
+    db_connection = connect_to_database()
+    if request.method == 'GET':
+        product_query = 'SELECT productID, price, make, model from products WHERE productID = %s'  % (productID)
+        product_result = execute_query(db_connection, product_query).fetchone()
+
+        if product_result == None:
+            return "No product found!"
+
+        return render_template('products.html', products = product_result)
+    elif request.method == 'POST':
+        productID = request.form['productID']
+        price = request.form['price']
+        make = request.form['make']
+        model = request.form['model']
+
+
+        query = "UPDATE products SET price = %s, make = %s, model = %s  WHERE productID = %s"
+        data = (productID, price, make, model)
+        result = execute_query(db_connection, query, data)
+        print(str(result.rowcount) + " products updated")
+
+        return redirect('products.html')
