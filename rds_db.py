@@ -13,7 +13,7 @@ conn = pymysql.connect(
 def insert_vehicle(cartID, productID, totalCost, quantity):
     cur = conn.cursor()
     #%s is incorrect. need to fix for integers.
-    cur.execute("INSERT INTO cart (cartID, productID, totalCost, quantity) VALUES (%d, %d, %s, %d)", (cartID, productID, totalCost, quantity))
+    cur.execute("INSERT INTO cart (cartID, pid, totalCost, quantity) VALUES (%d, %d, %d, %d)", (cartID, (SELECT productID FROM products WHERE productID = productID), totalCost, quantity))
     conn.commit()
 
 def get_vehicles():
