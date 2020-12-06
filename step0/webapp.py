@@ -157,3 +157,27 @@ def delete_cart(cartID):
 
     result = execute_query(db_connection, query, data)
     return (str(result.rowcount) + "cart deleted")
+
+@webapp.route('/update_order/<int:orderNumber>', methods=['POST','GET'])
+def update_order(orderNumber):
+    db_connection = connect_to_database()
+    if request.method == 'GET':
+        order_query = 'SELECT orderNumber, cartID, finalPrice from orders WHERE orderNumber = %s'  % (id)
+        order_result = execute_query(db_connection, order_query).fetchone()
+
+        if people_result == None:
+            return "No order found!"
+
+        return render_template('orders.html', orders = order_result)
+    elif request.method == 'POST':
+        orderNumber = request.form['orderNumber']
+        cartID = request.form['cartID']
+        finalPrice = request.form['finalPrice']
+
+
+        query = "UPDATE bsg_people SET cartID = %s, finalPrice = %s  WHERE orderNumber = %s"
+        data = (orderNumber, cartID, finalPrice)
+        result = execute_query(db_connection, query, data)
+        print(str(result.rowcount) + " orders updated")
+
+        return redirect('orders.html')
